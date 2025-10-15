@@ -70,10 +70,13 @@ export class QuizService {
         `http://localhost:3000/questions?categoryId=${this.categorieID.toString()}`
       )
       .subscribe((questions: any) => {
-        console.log(questions);
         for (const question of questions) {
           this.http
-            .get(`http://localhost:3000/answers?questionId=${question.id}`)
+            .get(
+              `http://localhost:3000/answers?questionId=${
+                question.id
+              }&categoryId=${this.categorieID.toString()}`
+            )
             .subscribe((answers: any) => {
               this.quizContent.push({
                 id: question.id,

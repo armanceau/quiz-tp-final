@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../shared/services/quiz.service';
+import { CathegorieService } from '../shared/services/cathegorie.service';
 
 @Component({
   selector: 'app-quiz',
@@ -12,9 +13,11 @@ export class QuizComponent implements OnInit {
   isQuizFinished = this.quizService.isQuizFinished;
   playerName = '';
   categorieID = 0;
+  categorieName = ''; // Ajout de la propriété manquante
 
   constructor(
     private quizService: QuizService,
+    private categoriesService: CathegorieService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -24,6 +27,13 @@ export class QuizComponent implements OnInit {
       this.quizService.playerName = params['playerName'];
       this.playerName = params['playerName'];
       this.quizService.categorieID = params['categorieID'];
+      this.quizService.getQuizContentByCategorie();
+
+      this.categoriesService
+        .getNameCategoryById(params['categorieID'])
+        .subscribe((categoryName: string) => {
+          this.categorieName = categoryName;
+        });
     });
   }
 

@@ -2,23 +2,23 @@
   "categories": [
     {
       "id": 1,
+      "name": "css",
+      "label": "CSS"
+    },
+    {
+      "id": 2,
       "name": "javascript",
       "label": "JavaScript"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "angular",
       "label": "Angular"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "html",
       "label": "HTML"
-    },
-    {
-      "id": 4,
-      "name": "css",
-      "label": "CSS"
     }
   ],
   "questions": [
