@@ -13,7 +13,7 @@ export class QuizComponent implements OnInit {
   isQuizFinished = this.quizService.isQuizFinished;
   playerName = '';
   categorieID = 0;
-  categorieName = ''; // Ajout de la propriété manquante
+  categorieName = '';
 
   constructor(
     private quizService: QuizService,
