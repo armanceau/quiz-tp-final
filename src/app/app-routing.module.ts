@@ -10,19 +10,19 @@ import { CathegoriesComponent } from './cathegories/cathegories.component';
 const routes: Routes = [
   {
     path: '',
-    component : HomeComponent
+    component: HomeComponent,
   },
   {
-    path: 'quiz/:playerName',
-    component : QuizComponent
+    path: 'quiz/:categorieID',
+    component: QuizComponent,
   },
   {
     path: 'result',
-    component : ResultComponent
+    component: ResultComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
@@ -37,6 +37,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
