@@ -31,10 +31,22 @@ export class CathegoriesComponent {
     });
   }
 
+  onSearch(): void {
+    this.filteredCategories = this.filterService.filterCategories(
+      this.cathegorieContent, 
+      this.searchTerm
+    );
+  }
+
   onSearchChange(): void {
     this.filteredCategories = this.filterService.filterCategories(
       this.cathegorieContent, 
       this.searchTerm
     );
+  }
+
+  clearSearch(): void {
+    this.searchTerm = '';
+    this.filteredCategories = this.cathegorieContent;
   }
 }
