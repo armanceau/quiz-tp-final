@@ -8,12 +8,14 @@ import { QuizService } from '../../shared/services/quiz.service';
   standalone: false,
 })
 export class QuestionComponent implements OnInit {
-  quizContent: any[] = this.quizService.quizContent;
+  get quizContent(): any[] {
+    return this.quizService.quizContent;
+  }
 
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.quizService.getQuizContentByCategorie();
+
   }
 
   addAnswer(answer: string, questionId: number) {

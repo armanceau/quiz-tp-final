@@ -65,24 +65,37 @@ export class QuizService {
   }
 
   getQuizContentByCategorie() {
+    this.quizContent = [];
+    this.playerAnswers = [];
+
     this.http
       .get(
         `http://localhost:3000/questions?categoryId=${this.categorieID.toString()}`
       )
       .subscribe((questions: any) => {
+        const tempQuizContent: any[] = [];
+        let questionsProcessed = 0;
+
+        if (questions.length === 0) {
+          this.quizContent = [];
+          return;
+        }
+
         for (const question of questions) {
           this.http
-            .get(
-              `http://localhost:3000/answers?questionId=${
-                question.id
-              }&categoryId=${this.categorieID.toString()}`
-            )
+            .get(`http://localhost:3000/answers?questionId=${question.id}`)
             .subscribe((answers: any) => {
-              this.quizContent.push({
+              tempQuizContent.push({
                 id: question.id,
                 question: question.questionLabel,
                 answers,
               });
+
+              questionsProcessed++;
+
+              if (questionsProcessed === questions.length) {
+                this.quizContent = tempQuizContent.sort((a, b) => a.id - b.id);
+              }
             });
         }
       });
