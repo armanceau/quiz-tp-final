@@ -5,6 +5,7 @@ import { QuizComponent } from "./quiz/quiz.component";
 import { ResultComponent } from "./quiz/result/result.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
+import { CathegoriesComponent } from './cathegories/cathegories.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,12 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'cathegories',
+    component: CathegoriesComponent
   }
+  
 ];
 
 @NgModule({
